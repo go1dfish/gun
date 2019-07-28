@@ -12,8 +12,8 @@
       api.random = (len) => Buffer.from(api.crypto.getRandomValues(new Uint8Array(Buffer.alloc(len))))
     }
     if(!api.crypto){try{
-      var crypto = require('crypto', 1);
-      const { TextEncoder, TextDecoder } = require('text-encoding', 1)
+      var crypto = require('crypto');
+      const { TextEncoder, TextDecoder } = require('text-encoding')
       Object.assign(api, {
         crypto,
         //subtle,
@@ -22,7 +22,7 @@
         random: (len) => Buffer.from(crypto.randomBytes(len))
       });
       //try{
-        const WebCrypto = require('node-webcrypto-ossl', 1);
+        const WebCrypto = require('node-webcrypto-ossl');
         api.ossl = api.subtle = new WebCrypto({directory: 'ossl'}).subtle // ECDH
       //}catch(e){
         //console.log("node-webcrypto-ossl is optionally needed for ECDH, please install if needed.");
